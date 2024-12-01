@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+import socket
+
+def bannertime(ip,port):
+ try:
+    socket.setdefaulttimeout(2)
+    s=socket.socket()
+    s.connect((ip,int(port)))
+    banner=str(s.recv(1024))
+    return banner
+ except Exception as a:
+    return ("Exception is "+str(a))
+
+def main():
+	ipa=str(input("What is the first three octects of IP address?"))
+
+	port = [22, 53, 25, 443, 80]
+
+	for lasto in range(1,255):
+		for singleport in port:
+			banner=bannertime(ipa+"."+str(lasto),int(singleport))
+			print("Banner  "+ipa+"."+str(lasto)+" "+banner)
+
+if __name__ =='__main__' :
+	main()
