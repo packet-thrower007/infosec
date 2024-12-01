@@ -6,7 +6,7 @@ port = 22010
 def findNextPort(currentPort):
     s = socket.socket()
     try:
-        s.connect(("target1.bowneconsulting.com",currentPort))
+        s.connect(("google.com",currentPort))
         try:
             banner = s.recv(1024).decode()
             print("port " + str(currentPort) + " is open with banner " + banner)
